@@ -1,0 +1,139 @@
+a {
+  color: #00B7FF;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:#333;
+}
+
+textarea {
+	border:1px solid #CCC;
+}
+
+/* Library */
+.content-right {
+	text-align:right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix {
+    zoom:1;
+}
+
+
+/* Template */
+
+div#page {
+	width:900px;
+	margin:auto;
+}
+
+div#left-column {
+	float:left;
+	width:410px;
+	padding-right:10px;
+	border-right:1px solid #CCC;
+}
+
+div#right-column {
+	display:inline-block;
+	width:410px;
+	padding-left:10px;
+}
+
+#romney-img {
+	display:inline-block;
+	width:215px;
+	height:70px;
+	background-image:url('../images/romney.png');
+}
+
+#obama-img {
+	width:215px;
+	height:70px;
+	background-image:url('../images/obama.png');
+}
+
+textarea.say {
+	height:25px;
+	width:400px;
+	font-size:14px;
+	padding:5px 5px 0 5px;
+	resize:none;
+
+	background: #F9F9F9; /* Old browsers */
+	background: -moz-linear-gradient(top,  #F9F9F9 0%, #ffffff 38%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F9F9F9), color-stop(38%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #F9F9F9 0%,#ffffff 38%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #F9F9F9 0%,#ffffff 38%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #F9F9F9 0%,#ffffff 38%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #F9F9F9 0%,#ffffff 38%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F9F9F9', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+textarea.say:focus {
+	outline:none;
+}
+
+.posts .post {
+	padding:10px 0 10px 0;
+	border-bottom:1px solid #EEE;
+}
+
+.post .party {
+	float:left;
+}
+
+.post .party div {
+	display:inline-block;
+	padding:0 3px 0 3px;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#FFF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.post .party div.red {
+	background-color:red;
+}
+
+.post .party div.blue {
+	background-color:blue;
+}
+
+.post .content {
+	display:inline-block;
+	width:380px;
+	padding-left:10px;
+	font-size:12px;
+}
+
+#footer {
+	color:#CCC;
+	margin:20px 0 0 0;
+	padding:3px;
+	font-size:12px;
+	text-align:right;
+	border-top:1px solid #EEE;
+}
+
+#footer a {
+	color:#CCC;
+	text-decoration:none;
+}
+
+#footer a:hover {
+	color:#666;
+}
