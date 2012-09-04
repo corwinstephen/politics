@@ -4,7 +4,30 @@ block scripts
 	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
 	script(src='/javascripts/jquery.form.js')
 	script(src='/javascripts/jquery.cookie.js')
+	script(src='/socket.io/socket.io.js')
 	script
+		function insertNewPost(data){
+			$('.posts.' + data.column).prepend(
+				'<div class="post">' +
+					'<div class="party">' + side_html(data.side) + '</div>' +
+					'<div class="content">' + data.content + '</div>' +
+				'</div>'
+			);
+			// 
+			function side_html(side) {
+				if(side == "republican") {
+					return '<div class="red">R</div>';
+				}
+				else {
+					return '<div class="blue">D</div>';
+				}
+			};
+		};
+		// socket.io
+		var socket = io.connect('http://localhost');
+		socket.on('update_posts', function (data) {
+			insertNewPost(data);
+		});
 		$(function(){
 			$('.say')
 			.keypress(function(e){
@@ -12,7 +35,7 @@ block scripts
 				if (e.which == 13) {
 					e.preventDefault();
 					$(this).closest('form').ajaxSubmit();
-
+					// 
 					// Show the new comment and reset form
 					function side_html(side) {
 						if(side == "republican") {
@@ -22,14 +45,21 @@ block scripts
 							return '<div class="blue">D</div>';
 						}
 					};
-
+					// 
+					var column = $(this).next('input').val();
 					var side = $.cookie('side');
+					var content = $(this).val();
+					// 
 					$(this).closest('.column').find('.posts').prepend(
 						'<div class="post">' +
 							'<div class="party">' + side_html(side) + '</div>' +
-							'<div class="content">' + $(this).val() + '</div>' +
+							'<div class="content">' + content + '</div>' +
 						'</div>'
 					);
+					// emit to socket
+					socket.emit('new_post', { column: column, side: side, content: content });
+					// 
+					// Clear the form 
 					$(this).val('');
 				}
 
@@ -45,7 +75,7 @@ block content
 					form(action='/comment', method='post', class='post-submit')
 						textarea.say(name = 'post[content]')
 						input(type 'hidden', name = 'post[person]', value = 'romney')
-			div.posts
+			div.posts.romney
 				each post in posts_romney
 					div.post.clearfix
 						div.party
@@ -60,7 +90,7 @@ block content
 				form(action='/comment', method='post', class='post-submit')
 					textarea.say(name = 'post[content]')
 					input(type 'hidden', name = 'post[person]', value = 'obama')
-			div.posts
+			div.posts.obama
 				each post in posts_obama
 					div.post
 						div.party

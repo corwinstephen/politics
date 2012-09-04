@@ -42,8 +42,8 @@ server.listen(app.get('port'), function(){
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
+  socket.on('new_post', function(data){
     console.log(data);
+    socket.broadcast.emit('update_posts', data);
   });
 });
