@@ -31,6 +31,8 @@ block scripts
 		$(function(){
 			$('.say')
 			.keypress(function(e){
+				if($.trim($(this).val()) == '') { return; }
+
 				// Submit the form
 				if (e.which == 13) {
 					e.preventDefault();
