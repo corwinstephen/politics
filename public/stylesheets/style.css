@@ -3,7 +3,7 @@ a {
 }
 
 body {
-  padding: 50px;
+  padding:10px 0 0 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color:#333;
 }
@@ -37,6 +37,10 @@ div#page {
 	margin:auto;
 }
 
+div#page .fb-like {
+	margin:0 0 20px 0;
+}
+
 div#left-column {
 	float:left;
 	width:410px;
@@ -52,12 +56,14 @@ div#right-column {
 
 #romney-img {
 	display:inline-block;
+	float:right;
 	width:215px;
 	height:70px;
 	background-image:url('../images/romney.png');
 }
 
 #obama-img {
+	float:left;
 	width:215px;
 	height:70px;
 	background-image:url('../images/obama.png');
@@ -67,6 +73,7 @@ textarea.say {
 	height:25px;
 	width:400px;
 	font-size:14px;
+	margin:10px 0 0 0;
 	padding:5px 5px 0 5px;
 	resize:none;
 
@@ -87,6 +94,7 @@ textarea.say:focus {
 .posts .post {
 	padding:10px 0 10px 0;
 	border-bottom:1px solid #EEE;
+	word-wrap:break-word;
 }
 
 .post .party {

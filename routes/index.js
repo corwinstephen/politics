@@ -1,4 +1,4 @@
-// Redis
+// Redis for heroku and local
 if (process.env.REDISTOGO_URL) {
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 	var client = require("redis").createClient(rtg.port, rtg.hostname);
@@ -33,14 +33,12 @@ exports.index = function(req, res){
 					posts_obama = posts;
 
 					res.render('index', { 
-				  	title: 'Politics',
+				  	title: 'ROM BAM dot COM',
 				  	posts_romney: posts_romney,
 				  	posts_obama: posts_obama
 				  });
 				});
-				
 			});
-
 		});
 	});
 };

@@ -67,37 +67,47 @@ block scripts
 		});
 
 block content
+	div#fbroot
+	script
+		(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=107991502686490";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 	div#page
-		div#left-column.column.clearfix
-			div.content-right
+		div.fb-like(data-href="http://rombam.com", data-send="true", data-width="900", data-show-faces="true")
+		div.clearfix
+			div#left-column.column.clearfix
 				div#romney-img
 				div
 					form(action='/comment', method='post', class='post-submit')
 						textarea.say(name = 'post[content]')
 						input(type 'hidden', name = 'post[person]', value = 'romney')
-			div.posts.romney
-				each post in posts_romney
-					div.post.clearfix
-						div.party
-							- if (post.side == "republican")
-								div.red R
-							- else
-								div.blue D
-						div.content= post.content
-		div#right-column.column.clearfix
-			div#obama-img
-			div
-				form(action='/comment', method='post', class='post-submit')
-					textarea.say(name = 'post[content]')
-					input(type 'hidden', name = 'post[person]', value = 'obama')
-			div.posts.obama
-				each post in posts_obama
-					div.post
-						div.party
-							- if (post.side == "republican")
-								div.red R
-							- else
-								div.blue D
-						div.content= post.content
+				div.posts.romney
+					each post in posts_romney
+						div.post
+							div.party
+								- if (post.side == "republican")
+									div.red R
+								- else
+									div.blue D
+							div.content= post.content
+			div#right-column.column.clearfix
+				div#obama-img
+				div
+					form(action='/comment', method='post', class='post-submit')
+						textarea.say(name = 'post[content]')
+						input(type 'hidden', name = 'post[person]', value = 'obama')
+				div.posts.obama
+					each post in posts_obama
+						div.post
+							div.party
+								- if (post.side == "republican")
+									div.red R
+								- else
+									div.blue D
+							div.content= post.content
 		div#footer
-			|Website by <a href="http://stephencorwin.com">Stephen Corwin</a>
+			|Internet p0wnage by <a href="http://stephencorwin.com">Stephen Corwin</a>
