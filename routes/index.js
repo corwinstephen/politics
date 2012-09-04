@@ -1,6 +1,5 @@
 // Redis
-var redis = require("redis"),
-    client = redis.createClient();
+var client = require('redis-url').connect(process.env.REDISTOGO_URL);,
 
 exports.index = function(req, res){
 	var posts_romney;
